@@ -1,0 +1,17 @@
+pydantic>=2.7
+pydantic-settings>=2.2
+python-dotenv
+asyncio
+httpx
+fastapi
+pandas
+rich
+openai
+mypy
+ruff
+aiohttp
+click
+requests
+streamlit
+plotly
+debugpy

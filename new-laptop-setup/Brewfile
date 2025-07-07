@@ -1,0 +1,118 @@
+# 🚀 Brewfile - Homebrew install list for macOS development
+
+# ✅ Install Homebrew (if not installed)
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# ✅ Install Everything in This Brewfile
+# brew bundle --file=Brewfile
+
+# -----------------------------------
+# ⚙️ System Utilities
+# -----------------------------------
+brew "git"
+brew "zsh"
+brew "wget"
+brew "curl"
+brew "tree"
+brew "jq"
+brew "htop"
+brew "btop"  # Advanced system monitor
+brew "fzf"
+brew "ripgrep"
+brew "neovim"
+brew "bat"
+brew "gh"  # GitHub CLI
+brew "ghq"  # Repository management tool
+brew "speedtest-cli"  # Network speed testing
+
+# -----------------------------------
+# 💻 Development Environments
+# -----------------------------------
+# Removed "python@3.11"
+# Removed "node"
+brew "nvm"
+brew "pyenv"
+brew "go"
+brew "rust"
+brew "docker-compose"
+
+# -----------------------------------
+# 🗄 Database Tools
+# -----------------------------------
+brew "postgresql"
+brew "mariadb"
+brew "redis"
+brew "sqlite"
+
+# -----------------------------------
+# 🔒 Networking & Security
+# -----------------------------------
+brew "openssl"
+brew "nmap"
+brew "socat"
+brew "ssh-copy-id"  # Easily add SSH keys to servers
+
+# -----------------------------------
+# 📂 Productivity & Development Apps
+# -----------------------------------
+cask "iterm2"
+cask "visual-studio-code"
+cask "google-chrome"
+cask "firefox"
+cask "docker"
+cask "postman"
+cask "slack"
+cask "rectangle"  # Window manager
+cask "orbstack"  # Lightweight alternative to Docker Desktop
+brew "imagemagick"  # Image manipulation tool
+
+# -----------------------------------
+# ☁️ Cloud & Storage Tools (Restored)
+# -----------------------------------
+cask "dropbox"
+cask "google-cloud-sdk"
+cask "evernote"
+
+# -----------------------------------
+# 🛠 DevOps & Cloud Tools
+# -----------------------------------
+brew "awscli"  # AWS CLI
+brew "terraform"  # Infrastructure as code
+brew "kubectl"  # Kubernetes CLI
+brew "helm"  # Kubernetes package manager
+brew "supabase"  # Supabase CLS as code
+brew "stripe"  # Stripe CLI
+
+# Tap for additional tools
+tap "supabase/tap"
+tap "stripe/stripe-cli"
+
+# -----------------------------------
+# 📊 System Monitor
+# -----------------------------------
+cask "xbar"  # Modern alternative to MenuMeters
+
+# -----------------------------------
+# 🔠 Fonts (Optional)
+# -----------------------------------
+cask "font-fira-code"
+cask "font-jetbrains-mono"
+
+# -----------------------------------
+# 🤖 AI Chat Assistants
+# -----------------------------------
+cask "chatgpt"  # OpenAI ChatGPT Desktop App
+cask "claude"   # Claude Desktop App
+
+# -----------------------------------
+# 🛠 Essential Shell Enhancements
+# -----------------------------------
+brew "c-ares"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+# -----------------------------------
+# ✅ Post-Installation Cleanup (Run Manually)
+# -----------------------------------
+# Run the following command manually after bundle installation:
+# brew cleanup
