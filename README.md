@@ -142,6 +142,19 @@ toolshed/
 
 ---
 
+# Contributing
+
+All changes must come through pull requests.
+
+- (Only owner can push to branches)
+- Fork the repository and submit your changes via a pull request.
+- All PRs will be reviewed manually.
+- No direct pushes, branch deletions, or force pushes are allowed.
+
+Thank you for contributing!
+
+---
+
 ## Disclaimer
 
 This project is provided as is under the MIT License. While every effort has been made to ensure these scripts are safe and effective, the author assumes no responsibility for errors, omissions, or changes in tool behavior due to upstream updates or compromised internet sources. Use at your own discretion — but realistically, I used this to set up my machine and use it daily.
