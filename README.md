@@ -145,3 +145,9 @@ toolshed/
 ## Disclaimer
 
 This project is provided as is under the MIT License. While every effort has been made to ensure these scripts are safe and effective, the author assumes no responsibility for errors, omissions, or changes in tool behavior due to upstream updates or compromised internet sources. Use at your own discretion — but realistically, I used this to set up my machine and use it daily.
+
+---
+
+## Keywords
+
+macOS developer setup, zsh config, bootstrap script, homebrew setup, pyenv, nvm, dev machine automation, dotfiles, CLI tools, node global packages
