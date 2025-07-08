@@ -1,5 +1,41 @@
 #!/bin/bash
-# Script to stop and remove all Docker containers, images, volumes, networks, and system data
+
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃                   Docker Nuclear Cleanup Script (toolshed)               ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+# This script is designed to aggressively clean up all local Docker artifacts
+# in order to reclaim disk space. The primary use-case is for developers
+# running local AI models (e.g., LLMs, vector DBs, GPU workloads) inside Docker
+# containers, which can rapidly consume disk resources.
+#
+# ❗ What this script does:
+#   • Stops all running Docker containers
+#   • Removes all containers (running or stopped)
+#   • Removes all Docker images (used or unused)
+#   • Removes all Docker volumes and networks
+#   • Prunes builder cache and system metadata
+#   • Calculates reclaimed disk space
+#
+# ⚠️ THIS WILL DELETE NEARLY ALL LOCAL DOCKER DATA.
+# You will need to re-pull images, recreate volumes, etc.
+#
+# 🔐 A confirmation prompt is included by default (default = No).
+#
+# 📌 Manual Final Step (optional):
+# For *complete* cleanup including all unused images across all projects,
+# you may run the following manually:
+#
+#     docker system prune -a
+#
+# This is not included in the script for safety reasons.
+# ------------------------------------------------------------------------------
+
+read -p "Are you sure you want to destroy all Docker data? [y/N] " confirm
+confirm=${confirm:-N}
+if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+    echo "Aborted. No changes made."
+    exit 0
+fi
 
 # Function to stop all running containers
 stop_containers() {

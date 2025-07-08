@@ -1,150 +1,118 @@
-tap "homebrew/bundle"
-tap "stripe/stripe-cli"
-tap "supabase/tap"
-brew "aom"
-brew "autoconf"
-brew "awscli"
-brew "bat"
-brew "brotli"
-brew "btop"
-brew "c-ares"
-brew "ca-certificates"
-brew "cairo"
-brew "cffi"
-brew "cryptography"
-brew "curl"
-brew "docker-compose"
-brew "fontconfig"
-brew "freetype"
-brew "fribidi"
-brew "fzf"
-brew "gettext"
-brew "gh"
-brew "ghostscript"
-brew "ghq"
-brew "giflib"
+# 🚀 Brewfile - Homebrew install list for macOS development
+
+# ✅ Install Homebrew (if not installed)
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# ✅ Install Everything in This Brewfile
+# brew bundle --file=Brewfile
+
+# -----------------------------------
+# ⚙️ System Utilities
+# -----------------------------------
 brew "git"
-brew "glib"
-brew "go"
-brew "graphite2"
-brew "groonga"
-brew "harfbuzz"
-brew "helm"
-brew "highway"
-brew "htop"
-brew "icu4c@76"
-brew "imagemagick"
-brew "imath"
-brew "jasper"
-brew "jbig2dec"
-brew "jpeg-turbo"
-brew "jpeg-xl"
-brew "jq"
-brew "krb5"
-brew "kubernetes-cli"
-brew "leptonica"
-brew "libarchive"
-brew "libb2"
-brew "libde265"
-brew "libdeflate"
-brew "libgit2"
-brew "libgit2@1.8"
-brew "libheif"
-brew "libidn"
-brew "libidn2"
-brew "liblinear"
-brew "liblqr"
-brew "libnghttp2"
-brew "libomp"
-brew "libpng"
-brew "libraw"
-brew "libssh2"
-brew "libtiff"
-brew "libtool"
-brew "libunistring"
-brew "libuv"
-brew "libvmaf"
-brew "libvterm"
-brew "libx11"
-brew "libxau"
-brew "libxcb"
-brew "libxdmcp"
-brew "libxext"
-brew "libxrender"
-brew "little-cms2"
-brew "llvm"
-brew "lpeg"
-brew "lua"
-brew "luajit"
-brew "luv"
-brew "lz4"
-brew "lzo"
-brew "m4"
-brew "mariadb"
-brew "mecab"
-brew "mecab-ipadic"
-brew "mpdecimal"
-brew "msgpack"
-brew "ncurses"
-brew "neovim"
-brew "nmap"
-brew "nvm"
-brew "oniguruma"
-brew "openexr"
-brew "openjpeg"
-brew "openssl@3"
-brew "pango"
-brew "pcre2"
-brew "pixman"
-brew "pkgconf"
-brew "postgresql@14"
-brew "pycparser"
-brew "pyenv"
-brew "python-packaging"
-brew "python@3.11"
-brew "python@3.12"
-brew "python@3.13"
-brew "readline"
-brew "redis"
-brew "ripgrep"
-brew "rtmpdump"
-brew "rust"
-brew "shared-mime-info"
-brew "socat"
-brew "speedtest-cli"
-brew "sqlite"
-brew "ssh-copy-id"
-brew "stripe"
-brew "supabase"
-brew "terraform"
-brew "tesseract"
-brew "tree"
-brew "tree-sitter"
-brew "unibilium"
-brew "webp"
-brew "wget"
-brew "x265"
-brew "xorgproto"
-brew "xz"
-brew "z3"
 brew "zsh"
-brew "zsh-autosuggestions"
-brew "zsh-syntax-highlighting"
-brew "zstd"
-cask "chatgpt"
-cask "claude"
-cask "docker"
-cask "dropbox"
-cask "evernote"
+brew "wget"
+brew "curl"
+brew "tree"
+brew "jq"
+brew "htop"
+brew "btop"  # Advanced system monitor
+brew "fzf"
+brew "ripgrep"
+brew "neovim"
+brew "bat"
+brew "gh"  # GitHub CLI
+brew "ghq"  # Repository management tool
+brew "speedtest-cli"  # Network speed testing
+
+# -----------------------------------
+# 💻 Development Environments
+# -----------------------------------
+# Removed "python@3.11"
+# Removed "node"
+brew "nvm"
+brew "pyenv"
+brew "go"
+brew "rust"
+brew "docker-compose"
+
+# -----------------------------------
+# 🗄 Database Tools
+# -----------------------------------
+brew "postgresql"
+brew "mariadb"
+brew "redis"
+brew "sqlite"
+
+# -----------------------------------
+# 🔒 Networking & Security
+# -----------------------------------
+brew "openssl"
+brew "nmap"
+brew "socat"
+brew "ssh-copy-id"  # Easily add SSH keys to servers
+
+# -----------------------------------
+# 📂 Productivity & Development Apps
+# -----------------------------------
+cask "iterm2"
+cask "visual-studio-code"
+cask "google-chrome"
 cask "firefox"
+cask "docker"
+cask "postman"
+cask "slack"
+cask "rectangle"  # Window manager
+cask "orbstack"  # Lightweight alternative to Docker Desktop
+brew "imagemagick"  # Image manipulation tool
+
+# -----------------------------------
+# ☁️ Cloud & Storage Tools (Restored)
+# -----------------------------------
+cask "dropbox"
+cask "google-cloud-sdk"
+cask "evernote"
+
+# -----------------------------------
+# 🛠 DevOps & Cloud Tools
+# -----------------------------------
+brew "awscli"  # AWS CLI
+brew "terraform"  # Infrastructure as code
+brew "kubectl"  # Kubernetes CLI
+brew "helm"  # Kubernetes package manager
+brew "supabase"  # Supabase CLS as code
+brew "stripe"  # Stripe CLI
+
+# Tap for additional tools
+tap "supabase/tap"
+tap "stripe/stripe-cli"
+
+# -----------------------------------
+# 📊 System Monitor
+# -----------------------------------
+cask "xbar"  # Modern alternative to MenuMeters
+
+# -----------------------------------
+# 🔠 Fonts (Optional)
+# -----------------------------------
 cask "font-fira-code"
 cask "font-jetbrains-mono"
-cask "google-chrome"
-cask "google-cloud-sdk"
-cask "iterm2"
-cask "orbstack"
-cask "postman"
-cask "rectangle"
-cask "slack"
-cask "visual-studio-code"
-cask "xbar"
+
+# -----------------------------------
+# 🤖 AI Chat Assistants
+# -----------------------------------
+cask "chatgpt"  # OpenAI ChatGPT Desktop App
+cask "claude"   # Claude Desktop App
+
+# -----------------------------------
+# 🛠 Essential Shell Enhancements
+# -----------------------------------
+brew "c-ares"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+# -----------------------------------
+# ✅ Post-Installation Cleanup (Run Manually)
+# -----------------------------------
+# Run the following command manually after bundle installation:
+# brew cleanup
