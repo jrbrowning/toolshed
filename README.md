@@ -117,9 +117,8 @@ You are ready to go! The following configurations are avaialble.
 
 ### Docker Cleanup
 
-```bash
-./docker/destroy-everything.sh    # It does what the name says.   Read Disclaimer in comments before using!
-```
+- Aggressively remove all Docker containers, images, volumes, networks, and caches. As the name implies, this is the "I want to start over... everything must go". USE WITH CAUTION!
+- Script: [`docker/destroy-everything.sh`](docker/destroy-everything.sh)
 
 ---
 
