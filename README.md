@@ -114,7 +114,8 @@ Installs Python, creates venv, installs global tools
 )
 
 ```bash
-source ./setup_python_env.sh
+cd toolshed;
+source setup_python_env.sh
 ```
 
 ### Node.js
