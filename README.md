@@ -134,22 +134,11 @@ toolshed/
 │   └── requirements.txt ## This is where you add any python ENV specific tools you want.
 ├── new-laptop-setup/
 │   ├── Brewfile
-│   ├── brew_packages.json
 │   ├── brew_sync.py
 │   └── setup.py
 ├── docker/
 │   └── destroy-everything.sh. ## Read disclaimer first at the top of the script before using.   It does what the name implies.   It's for when you want to REALLY start over with your local docker.
 ```
-
----
-
-## Requirements
-
-- macOS
-- Homebrew
-- Python 3.8+
-- Node.js (via NVM)
-- Docker (for cleanup script)
 
 ---
 
