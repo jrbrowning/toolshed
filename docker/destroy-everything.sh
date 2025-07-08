@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-# ┃                   Docker Nuclear Cleanup Script (toolshed)               ┃
+# ┃                   Docker Nuclear Cleanup Script (toolshed)                ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 # This script is designed to aggressively clean up all local Docker artifacts
 # in order to reclaim disk space. The primary use-case is for developers
