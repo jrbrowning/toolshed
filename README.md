@@ -60,7 +60,6 @@ Got a new Laptop? As your machine won't have any base tools (homebrew, git, etc)
 
 ```bash
 git clone git@github.com:jrbrowning/toolshed.git
-cd new-laptop-setup
 ```
 
 1. Copy the `new-laptop-setup` folder to any folder to your `iCloud Drive`. This will be accessible on your new machine
