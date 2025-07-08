@@ -8,6 +8,8 @@ class BrewSync:
     """
     Handles Homebrew package listing, JSON export, and Brewfile generation.
     Also syncs NVM (Node Version Manager) environment.
+
+    Uncomment the example usage at the bottom to run the script.
     """
 
     def __init__(self, json_path: str = "brew_packages.json", brewfile_path: str = "Brewfile"):
@@ -62,7 +64,9 @@ class BrewSync:
         print(f"Generated Brewfile at {self.brewfile_path}")
 
     def install_from_brewfile(self):
-        """Installs packages from the Brewfile on a new machine."""
+        """Installs packages from the Brewfile on a new machine.
+        brew bundle is idempotent — rerunning it will not break anything. It only installs what’s missing.
+        """
         if not self.brewfile_path.exists():
             print(f"Error: {self.brewfile_path} not found. Run `generate_brewfile` first.")
             return
@@ -120,7 +124,7 @@ if __name__ == "__main__":
     brew_sync.generate_brewfile()
 
     # Step 3: Install from Brewfile (on a new machine)
-    # brew_sync.install_from_brewfile()
+    brew_sync.install_from_brewfile()
 
     # Step 4: Export NVM environment
     # brew_sync.export_nvm_environment()

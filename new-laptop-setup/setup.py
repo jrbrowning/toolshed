@@ -2,15 +2,13 @@ import os
 import subprocess
 from pathlib import Path
 
+# This script sets up a new macOS laptop for development by installing Homebrew,
+# packages from a Brewfile, and Zsh plugins for syntax highlighting and autosuggestions.
+
 # Define paths
 HOME = Path.home()
 DEV_SETUP_DIR = HOME / "../../con"
 BREWFILE_PATH = Path("./Brewfile")  # Reads from the current directory
-ITERM_THEMES_DIR = DEV_SETUP_DIR / "iterm2-themes"
-ITERM_DRACULA_THEME = ITERM_THEMES_DIR / "iterm" / "Dracula.itermcolors"
-
-# Ensure setup directory exists
-DEV_SETUP_DIR.mkdir(parents=True, exist_ok=True)
 
 def run_command(command, description=""):
     """Run a shell command and print status."""
@@ -45,27 +43,6 @@ def install_brewfile():
         print(f"❌ Brewfile not found at {BREWFILE_PATH}! Make sure it exists.")
 
 
-def install_dracula_theme():
-    """Install Dracula theme for iTerm2 only if not already installed."""
-    if not ITERM_THEMES_DIR.exists():
-        print("🎨 Installing Dracula theme for iTerm2...")
-        ITERM_THEMES_DIR.mkdir(parents=True, exist_ok=True)
-        run_command(
-            f"git clone https://github.com/dracula/iterm.git {ITERM_THEMES_DIR}",
-            "Downloading Dracula theme",
-        )
-    else:
-        print("✅ Dracula theme is already installed.")
-
-    print("\n📌 **To apply the Dracula theme in iTerm2, follow these steps:**")
-    print("1️⃣ Open **iTerm2** → Preferences (`Cmd + ,`)")
-    print("2️⃣ Go to **Profiles** → **Colors**")
-    print(f"3️⃣ Click **Load Presets...** → **Import** and select:")
-    print(f"   `{ITERM_DRACULA_THEME}`")
-    print("4️⃣ Click **Load Presets...** again and choose **Dracula**.")
-    print("✅ Your terminal is now dark & optimized! 🌙\n")
-
-
 def install_zsh_plugins():
     """Install Zsh syntax highlighting and autosuggestions only if missing."""
     installed_plugins = subprocess.run("brew list", shell=True, text=True, capture_output=True)
@@ -86,7 +63,6 @@ if __name__ == "__main__":
 
     install_homebrew()
     install_brewfile()
-    install_dracula_theme()
     install_zsh_plugins()
 
     print("🎉 Setup complete! Restart your terminal to apply changes.")

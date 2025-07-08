@@ -49,4 +49,5 @@ supabase/dump-data.sql
 # Virutal env
 venv/
 
-/toolshed
+# toolshed - developer tool repo
+toolshed/
