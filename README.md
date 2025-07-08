@@ -54,7 +54,7 @@ Got a new Laptop? As your machine won't have any base tools (homebrew, git, etc)
 - **Idempotent** – Homebrew’s bundle install won’t reinstall anything unnecessarily.
 - **Extendable** – Add or remove tools in one place. Easy to version control.
 
-### Homebrew & Zsch
+### Homebrew, Git, Zsch, NMV install
 
 0. Clone this repository on your existing machine.
 
@@ -71,15 +71,19 @@ cp -R new-laptop-setup ~/Library/Mobile\ Documents/com~apple~CloudDocs/
 
 2. Run the script.
 
+- Install Homebrew, packages in the Brewfile, and Zsh
+
 ```bash
 cd new-laptop-setup
-python3 setup.py             # Install Homebrew, packages in the Brewfile, and Zsh plugins
+python3 setup.py
 ```
 
 3. (optional): Added some new packages in your Brewfile and want to "sync" again?
 
+- Export or restore Homebrew packages
+
 ```bash
-python3 brew_sync.py         # Export or restore Homebrew packages
+python3 brew_sync.py
 ```
 
 ## Daily use Setup
@@ -105,14 +109,21 @@ You are ready to go! The following configurations are avaialble.
 
 ### Python
 
+Installs Python, creates venv, installs global tools
+(why `source` first? When you source the file, you'll enter the newly created python ENV after completion. Otherwise, you'll just build it.
+(also, to exit out of a venv, type `deactivate`)
+)
+
 ```bash
-./setup_python_env.sh     # Installs Python, creates venv, installs global tools
+source ./setup_python_env.sh
 ```
 
 ### Node.js
 
+Installs Node via NVM and global npm tools defined in [`node-tools`](global-tools/node-tools.json)
+
 ```bash
-./setup-node-env.sh       # Installs Node, NVM, and global npm tools
+./setup-node-env.sh
 ```
 
 ### Docker Cleanup
@@ -144,9 +155,8 @@ toolshed/
 
 # Contributing
 
-All changes must come through pull requests.
+All changes must come through pull requests (only owner can push to branches)
 
-- (Only owner can push to branches)
 - Fork the repository and submit your changes via a pull request.
 - All PRs will be reviewed manually.
 - No direct pushes, branch deletions, or force pushes are allowed.
