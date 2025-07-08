@@ -2,19 +2,21 @@
 
 An opinionated developer productivity toolkit for macOS, focused on development environment setup, reproducibility, and automation.
 
-This repo contains scripts and configuration files to bootstrap Python, Node.js, Docker, and Homebrew environments, making it easy to set up a new laptop or keep your dev tools in sync.
+This repo contains scripts and configuration files to bootstrap your environments, making it easy to set up a new laptop or keep your dev tools in sync.
 
 # Motivation
 
-Relying on the default versions of python and node on your machine can lead to a lot of dependency down the road. What happens when you (inevitably) need to update something and next thing your local tool starts giving "not found" errors? Uggghh.
+I got a new laptop and wanted to start with a fresh env install. Then I realized, I really still want _a few things_ from my old setup.
 
-My solution was to create a toolshed and whenever I create a new iterm session, source whichever ENV script I need (python or node) and i'll always have a consistent starting point. Tool versions are defined as ENV's for future upgrades, but the script always remains the same.
+Also, relying on the default versions of Python and Node on your machine can lead to a lot of dependency down the road. What happens when you (inevitably) need to update something and next thing your local tool starts giving "not found" errors? Ugh.
+
+My solution was to create a toolshed and whenever I get a new laptop (or create a new iTerm session), I can source whichever ENV script I need (new laptop, Python or Node) and I'll always have a consistent starting point. Tool versions are defined as ENVs and config files for future upgrades, but the script always remains the same.
 
 # Features
 
 **Brewfile**: Portable Homebrew Configuration
 
-This file defines the my macOS toolchain setup:
+This file defines my macOS toolchain setup:
 
 - 🔧 System tools (htop, jq, tree) for system inspection
 - 💻 Language environments (nvm, pyenv, rust, go) for dev stack
@@ -24,45 +26,22 @@ This file defines the my macOS toolchain setup:
 - 🪟 UI utilities (iterm2, rectangle) for a UI setup
 - 📂 Cloud storage (Dropbox, GCP SDK) for syncing
 - 🤖 AI tools (ChatGPT, Claude) for local desktop integration
-- 📌 Using this file ensures full parity across machines with a single command: `brew bundle --file=Brewfile`
+- 📌 Using this file ensures full parity across machines with a single commands:
 
-Usage:
+## 🚀 Usage Summary
 
-- **Automated Python Environment**
+This toolkit supports two primary workflows:
 
-  - Script: [`setup_python_env.sh`](setup_python_env.sh)
-  - Install Python via `pyenv` will create and activate a virtual environment.
-  - Install global Python tools from [`global-tools/requirements.txt`](global-tools/requirements.txt)
+[🆕 New Laptop Setup](#new-laptop-setup)
 
-- **Automated Node.js Environment**
+- One-command bootstrap for Homebrew, CLI tools, and Zsh plugins
+- Restore or sync packages using a generated Brewfile
 
-  - Install Node.js via `nvm`
-  - Install global npm tools from [`global-tools/node-tools.json`](global-tools/node-tools.json)
-  - Script: [`setup-node-env.sh`](setup-node-env.sh)
+[🛠️ Daily Environment Consistency](#daily-use-setup)
 
-- **New Laptop Bootstrap**
-
-  - Install Homebrew, all packages, and Zsh plugins in one go
-  - Script: [`new-laptop-setup/setup.py`](new-laptop-setup/setup.py)
-
-- **Homebrew Sync & Restore**
-
-  - Scripts: [`new-laptop-setup/brew_sync.py`](new-laptop-setup/brew_sync.py),
-  - Export installed formulas, casks, and taps to JSON
-  - Generate a `Brewfile` for easy restoration
-  - Install all packages from a `Brewfile`
-
-  - This will read and install any packages in [`new-laptop-setup/Brewfile`](new-laptop-setup/Brewfile),
-  - A list of all the packages installed will be returned for documentation (.gitignored) [`new-laptop-setup/brew_packages.json`](new-laptop-setup/brew_packages.json)
-
-- **Docker Cleanup**
-
-  - **_Aggressively_** remove all Docker containers, images, volumes, networks, and caches.
-
-  - As the name implies, this is the "I want to start over... everything must go". USE WITH CAUTION!
-  - Script: [`docker/destroy-everything.sh`](docker/destroy-everything.sh)
-
----
+- Setup Python with pyenv and install global tools
+- Setup Node.js via nvm and install global npm packages
+- Free up space from Docker usage (esp. for local AI dev)
 
 ## New laptop Setup
 
@@ -126,14 +105,14 @@ You are ready to go! The following configurations are avaialble.
 
 ### Python
 
-```sh
-bash setup_python_env.sh     # Installs Python, creates venv, installs global tools
+```bash
+./setup_python_env.sh     # Installs Python, creates venv, installs global tools
 ```
 
 ### Node.js
 
-```sh
-bash setup-node-env.sh       # Installs Node, NVM, and global npm tools
+```bash
+./setup-node-env.sh       # Installs Node, NVM, and global npm tools
 ```
 
 ### Docker Cleanup
@@ -177,4 +156,4 @@ toolshed/
 
 ## Disclaimer
 
-This project is provided as is under the MIT License. While every effort has been made to ensure these scripts are safe and effective, the author assumes no responsibility for errors, omissions, or changes in tool behavior due to upstream updates or compromised internet sources. Use at your own discretion — but realistically, I used this to setup my machine and use it daily.
+This project is provided as is under the MIT License. While every effort has been made to ensure these scripts are safe and effective, the author assumes no responsibility for errors, omissions, or changes in tool behavior due to upstream updates or compromised internet sources. Use at your own discretion — but realistically, I used this to set up my machine and use it daily.
