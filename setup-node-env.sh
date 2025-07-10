@@ -5,25 +5,6 @@ NODE_VERSION="20.19.2"
 
 echo "📦 Bootstrapping Node environment (Node v$NODE_VERSION, NVM v$NVM_VERSION)..."
 
-# Ensure jq is installed
-if ! command -v jq &> /dev/null; then
-    echo "🔧 'jq' not found. Installing..."
-    if [ "$(uname)" == "Darwin" ]; then
-        if ! command -v brew &> /dev/null; then
-            echo "❌ Homebrew not found. Please install jq manually."
-            exit 1
-        fi
-        brew install jq
-    elif [ -f /etc/debian_version ]; then
-        sudo apt-get update && sudo apt-get install -y jq
-    elif [ -f /etc/redhat-release ]; then
-        sudo yum install -y epel-release && sudo yum install -y jq
-    else
-        echo "❌ Unsupported OS. Please install jq manually."
-        exit 1
-    fi
-fi
-
 # Ensure NVM is installed or install it
 export NVM_DIR="$HOME/.nvm"
 if [ ! -s "$NVM_DIR/nvm.sh" ]; then
@@ -48,18 +29,18 @@ if [ ! -f "$TOOLS_JSON" ]; then
     exit 1
 fi
 
-# Read each package and strip version prefix like ^
+# Ensure jq is available
+if ! command -v jq &> /dev/null; then
+    echo "❌ 'jq' is required but not installed. Add it to your node-tools.json and re-run this script."
+    exit 1
+fi
+
+# Install packages one at a time in JSON order
 for tool in $(jq -r '.dependencies | to_entries[] | "\(.key)@\(.value | sub("^"; ""))"' "$TOOLS_JSON"); do
     echo "📥 Installing $tool..."
     npm install -g "$tool"
 done
 
-# List globally installed packages (shallow view)
-echo "📄 Globally installed npm packages:"
+# Show final list
+echo "📄 Final list of globally installed npm packages:"
 npm ls -g --depth=0
-
-# Commitizen global adapter setup
-echo "🛠 Initializing Commitizen global adapter (cz-conventional-changelog)..."
-commitizen init cz-conventional-changelog --save --global
-
-echo "✅ Bootstrapping complete!"
