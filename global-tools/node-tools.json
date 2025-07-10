@@ -3,11 +3,12 @@
   "dependencies": {
     "corepack": "0.23.0",
     "npm": "10.2.4",
-    "commitizen": "4.3.0",
-    "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5",
-    "tsx": "^4.7.0"
+    "tsx": "^4.7.0",
+    "commitizen": "4.3.0",
+    "cz-conventional-changelog": "3.3.0",
+    "jq": "^1.6.0"
   }
 }
