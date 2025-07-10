@@ -1,6 +1,4 @@
 #!/bin/bash
-set -e  # Exit immediately on error
-
 # Ensure pyenv is installed
 if ! command -v pyenv &> /dev/null; then
     echo "❌ pyenv is not installed. Install it first: https://github.com/pyenv/pyenv"

@@ -1,8 +1,7 @@
 #!/bin/bash
-set -e
 
 NVM_VERSION="0.39.7"
-NODE_VERSION="20.18.2"
+NODE_VERSION="20.19.2"
 
 echo "📦 Bootstrapping Node environment (Node v$NODE_VERSION, NVM v$NVM_VERSION)..."
 
