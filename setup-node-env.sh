@@ -58,4 +58,8 @@ done
 echo "📄 Globally installed npm packages:"
 npm ls -g --depth=0
 
+# Commitizen global adapter setup
+echo "🛠 Initializing Commitizen global adapter (cz-conventional-changelog)..."
+commitizen init cz-conventional-changelog --save --global
+
 echo "✅ Bootstrapping complete!"
