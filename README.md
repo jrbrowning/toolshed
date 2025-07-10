@@ -109,21 +109,21 @@ You are ready to go! The following configurations are avaialble.
 ### Python
 
 Installs Python, creates venv, installs global tools
-(why `source` first? When you source the file, you'll enter the newly created python ENV after completion. Otherwise, you'll just build it.
-(also, to exit out of a venv, type `deactivate`)
-)
+(why `source` first? When you source the file, you'll enter the newly created env. Otherwise, you'll just build it)
 
 ```bash
 cd toolshed;
 source setup_python_env.sh
 ```
+(To exit out of a venv, type `deactivate`)
 
 ### Node.js
 
 Installs Node via NVM and global npm tools defined in [`node-tools`](global-tools/node-tools.json)
 
 ```bash
-./setup-node-env.sh
+cd toolshed;
+source setup-node-env.sh
 ```
 
 ### Docker Cleanup

@@ -44,3 +44,9 @@ done
 # Show final list
 echo "📄 Final list of globally installed npm packages:"
 npm ls -g --depth=0
+
+# Write local .czrc to current directory
+echo "🛠 Writing global .czrc pointing to global adapter in $HOME/.czrc..."
+echo '{ "path": "cz-conventional-changelog" }' > "$HOME/.czrc"
+
+echo "✅ Bootstrapping complete! Run \`npx cz\` here to use the standard commit wizard."

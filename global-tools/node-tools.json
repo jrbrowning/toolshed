@@ -8,7 +8,6 @@
     "typescript": "^5.4.5",
     "tsx": "^4.7.0",
     "commitizen": "4.3.0",
-    "cz-conventional-changelog": "3.3.0",
-    "jq": "^1.6.0"
+    "cz-conventional-changelog": "3.3.0"
   }
 }
