@@ -3,6 +3,14 @@
 # Python + Poetry Environment Setup Script
 # Usage: source setup_python_poetry.sh
 
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Get the directory where the script was called from
+CURRENT_DIR="$(pwd)"
+
+echo "Script location: $SCRIPT_DIR"
+echo "Current directory: $CURRENT_DIR"
+
 # Define the Python version
 PYTHON_VERSION="3.12.2"
 
@@ -23,10 +31,23 @@ if ! command -v pyenv &> /dev/null; then
     return 1 2>/dev/null || exit 1
 fi
 
-# Check if poetry is installed
+# Check if poetry is installed, install if missing
 if ! command -v poetry &> /dev/null; then
-    echo -e "${RED}❌ Poetry is not installed. Install it first: https://python-poetry.org/docs/#installation${NC}"
-    return 1 2>/dev/null || exit 1
+    echo -e "${YELLOW}🔄 Poetry not found. Installing Poetry...${NC}"
+    curl -sSL https://install.python-poetry.org | python3 -
+    
+    # Add to PATH for current session
+    export PATH="$HOME/.local/bin:$PATH"
+    
+    # Check if installation worked
+    if ! command -v poetry &> /dev/null; then
+        echo -e "${RED}❌ Poetry installation failed. You may need to restart your shell or add to PATH manually${NC}"
+        echo -e "${BLUE}💡 Add this to your ~/.zshrc or ~/.bashrc:${NC}"
+        echo -e "${GREEN}   export PATH=\"\$HOME/.local/bin:\$PATH\"${NC}"
+        return 1 2>/dev/null || exit 1
+    else
+        echo -e "${GREEN}✅ Poetry installed successfully${NC}"
+    fi
 fi
 
 # Install and set Python version with pyenv
