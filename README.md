@@ -108,12 +108,35 @@ You are ready to go! The following configurations are avaialble.
 
 ### Python
 
+Why not just install globally?   Sure, you absolutely can.   My background at an agency lead me to having to install many different versions of node, python, php, etc.. to match whatever client needs where.   This kind of need quickly overwhelms the idea of "global" anything.   You will find yourself in dependency hell before you know it.   
+
+So this is my (highly opinionated) solution
+
+Opt1:  Create a Virtual ENV with useful packages.   Can source anywhere.
+```setup_python...``` 
+
 Installs Python, creates venv, installs global tools
 (why `source` first? When you source the file, you'll enter the newly created env. Otherwise, you'll just build it)
 
 ```bash
 cd toolshed;
 source setup_python_env.sh
+```
+(To exit out of a venv, type `deactivate`)
+
+Opt2:  Create a Virtual ENV from your pyproject.toml.  Install using poetry.  
+```setup_poetry...```
+
+Installs Python, creates venv, installs global tools via pyproject.toml.
+
+(why `source` first? When you source the file, you'll enter the newly created env. Otherwise, you'll just build it)
+
+```bash
+cp setup_poetry_env.sh into a bin directory in your repo.   I like at root /bin
+```
+then you can source the file from whereven your pyproject.toml is
+```bash
+source ./bin/setup_poetry_env.sh
 ```
 (To exit out of a venv, type `deactivate`)
 

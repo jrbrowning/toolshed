@@ -1,7 +1,7 @@
-import subprocess
 import json
+import subprocess
 from pathlib import Path
-from typing import List, Dict
+from typing import List
 
 
 class BrewSync:
@@ -47,16 +47,16 @@ class BrewSync:
         with open(self.json_path, "r") as f:
             brew_data = json.load(f)
 
-        brewfile_lines = []
+        brewfile_lines: List[str] = []
 
         for tap in brew_data.get("taps", []):
-            brewfile_lines.append(f"tap \"{tap}\"")
+            brewfile_lines.append(f'tap "{tap}"')
 
         for formula in brew_data.get("formulas", []):
-            brewfile_lines.append(f"brew \"{formula}\"")
+            brewfile_lines.append(f'brew "{formula}"')
 
         for cask in brew_data.get("casks", []):
-            brewfile_lines.append(f"cask \"{cask}\"")
+            brewfile_lines.append(f'cask "{cask}"')
 
         with open(self.brewfile_path, "w") as f:
             f.write("\n".join(brewfile_lines) + "\n")
@@ -86,7 +86,7 @@ class BrewSync:
         except json.JSONDecodeError:
             packages = []
 
-        nvm_data = {"nvm_version": nvm_version, "global_npm_packages": packages}
+        nvm_data: dict[str, object] = {"nvm_version": nvm_version, "global_npm_packages": packages}
 
         with open(nvm_json_path, "w") as f:
             json.dump(nvm_data, f, indent=4)
@@ -113,15 +113,16 @@ class BrewSync:
 
         print(f"Restored NVM environment with version {nvm_version} and global packages.")
 
+
 # Example Usage
 if __name__ == "__main__":
     brew_sync = BrewSync()
 
     # Step 1: Export Homebrew packages
-    brew_sync.export_brew_packages()
+    # brew_sync.export_brew_packages()
 
     # Step 2: Generate Brewfile
-    brew_sync.generate_brewfile()
+    # brew_sync.generate_brewfile()
 
     # Step 3: Install from Brewfile (on a new machine)
     brew_sync.install_from_brewfile()
