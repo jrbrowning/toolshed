@@ -26,6 +26,11 @@ brew "ghq"  # Repository management tool
 brew "speedtest-cli"  # Network speed testing
 
 # -----------------------------------
+# 📊 Visualization & Diagrams
+# -----------------------------------
+brew "graphviz"  # Graph visualization software (needed for FSM diagrams)
+
+# -----------------------------------
 # 💻 Development Environments
 # -----------------------------------
 # Removed "python@3.11"
