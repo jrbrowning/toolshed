@@ -132,11 +132,12 @@ Installs Python, creates venv, installs global tools via pyproject.toml.
 (why `source` first? When you source the file, you'll enter the newly created env. Otherwise, you'll just build it)
 
 ```bash
-cp setup_poetry_env.sh into a bin directory in your repo.   I like at root /bin
+cp setup_poetry_env.sh into a bin directory in your repo.   I like it at <project root> /bin
 ```
 then you can source the file from whereven your pyproject.toml is
 ```bash
-source ./bin/setup_poetry_env.sh
+cd <directory with pyproject.toml>
+source ../bin/setup_poetry_env.sh
 ```
 (To exit out of a venv, type `deactivate`)
 

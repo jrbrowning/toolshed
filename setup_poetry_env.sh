@@ -77,19 +77,25 @@ if [ -f "pyproject.toml" ]; then
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✅ Poetry dependencies installed successfully!${NC}"
         
-        # Activate Poetry shell
-        echo -e "${YELLOW}🔄 Activating Poetry virtual environment...${NC}"
+        # Get the virtual environment path
+        VENV_PATH=$(poetry env info --path)
         
-        # Note: We can't directly activate poetry shell in a sourced script
-        # Instead, we'll show the user how to activate it
-        echo -e "${BLUE}📋 To activate the Poetry environment, run:${NC}"
-        echo -e "${GREEN}   poetry shell${NC}"
-        echo ""
-        echo -e "${BLUE}💡 Or run commands with Poetry:${NC}"
-        echo -e "${GREEN}   poetry run python your_script.py${NC}"
-        echo ""
-        echo -e "${BLUE}📍 Virtual environment location:${NC}"
-        poetry env info --path
+        if [ -n "$VENV_PATH" ] && [ -d "$VENV_PATH" ]; then
+            echo -e "${YELLOW}🔄 Activating Poetry virtual environment...${NC}"
+            
+            # Activate the virtual environment directly
+            source "$VENV_PATH/bin/activate"
+            
+            echo -e "${GREEN}✅ Virtual environment activated!${NC}"
+            echo -e "${BLUE}📍 Virtual environment: $VENV_PATH${NC}"
+            echo -e "${BLUE}🐍 Active Python: $(which python)${NC}"
+            echo ""
+            echo -e "${GREEN}🎯 You can now run: python <your script name>.py${NC}"
+        else
+            echo -e "${YELLOW}⚠️ Could not find virtual environment path${NC}"
+            echo -e "${BLUE}📋 To activate manually, run:${NC}"
+            echo -e "${GREEN}   poetry shell${NC}"
+        fi
         
     else
         echo -e "${RED}❌ Poetry installation failed!${NC}"
