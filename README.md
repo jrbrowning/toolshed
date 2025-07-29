@@ -150,10 +150,22 @@ cd toolshed;
 source setup-node-env.sh
 ```
 
+## Clean up scripts
+
+### Python Cache
+
+Short defensive script to remove cache files from parent recurrsively
+When you just want to confirm it's not a cache thing, destroy it all and start over.
+Call from directory you want to recurrsively remove all cache files from 
+
+```bash
+source ../toolshed/py_clean_cache.sh
+```
+
 ### Docker Cleanup
 
 - Aggressively remove all Docker containers, images, volumes, networks, and caches. As the name implies, this is the "I want to start over... everything must go". USE WITH CAUTION!
-- Script: [`docker/destroy-everything.sh`](docker/destroy-everything.sh)
+- Script: [`clean_scripts/destroy-everything.sh`](clean_scripts/destroy-everything.sh)
 
 ---
 
@@ -161,17 +173,19 @@ source setup-node-env.sh
 
 ```
 toolshed/
-├── setup_python_env.sh
-├── setup-node-env.sh
+├── setup_python_env.sh        ## setup basic pyenv 
+├── setup-node-env.sh          ## setup basic node env
+├── setup_poetry_env.sh        ## setup env based on poetry file 
 └── .gitignore
 ├── global-tools/
-│   ├── node-tools.json ## This is a JSON format for installing any global npm tools you.
-│   └── requirements.txt ## This is where you add any python ENV specific tools you want.
+│   ├── node-tools.json        ## This is a JSON format for installing any the setup-node-env npm tools you.
+│   └── requirements.txt       ## This is where you add the setup_python_env ENV specific tools you want.
 ├── new-laptop-setup/
 │   ├── Brewfile
 │   ├── brew_sync.py
 │   └── setup.py
-├── docker/
+├── cleanup_scripts/
+│   |── py_clean_cache.py.     ## Recursively remove all py_cache files
 │   └── destroy-everything.sh. ## Read disclaimer first at the top of the script before using.   It does what the name implies.   It's for when you want to REALLY start over with your local docker.
 ```
 
